@@ -9,6 +9,6 @@ setup(
   url = 'https://github.com/lionfish0/download_openaq.git',
   keywords = ['openaq'],
   classifiers = [],
-  install_requires=['py-openaq','pandas','pickle'],
+  install_requires=['py-openaq','pandas'],
 )
 
