@@ -29,12 +29,10 @@ def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000):
  
     if olddata is None:
         print("Downloading backed up raw CSV files from OpenAQ AWS. This may take a while")
-        #ts = pd.Timestamp('2015-06-29') #first file in database
-
-
         #I don't see much alternative to downloading the whole file, as the records are spread throughout the file
         cs = []
-        ts = pd.Timestamp('2015-06-29')
+#        ts = pd.Timestamp('2015-06-29')
+        ts = pd.Timestamp('2017-06-01')
         while ts<pd.to_datetime('today')-pd.DateOffset(88):
             url=ts.strftime('https://openaq-data.s3.amazonaws.com/%Y-%m-%d.csv')
             if verbose:
