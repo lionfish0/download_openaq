@@ -4,7 +4,7 @@ import pandas as pd
 import io
 import requests
 
-def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000):
+def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000,startdate=None):
     """Download data from OpenAQ.
     loc = location
     e.g. loc = 'US Diplomatic Post: Kampala' 
@@ -32,15 +32,22 @@ def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000):
         #I don't see much alternative to downloading the whole file, as the records are spread throughout the file
         cs = []
 #        ts = pd.Timestamp('2015-06-29')
-        ts = pd.Timestamp('2017-06-01')
-        while ts<pd.to_datetime('today')-pd.DateOffset(88):
+        if startdate is None:
+            ts = pd.Timestamp('2015-06-29') #earlier file in openAQ storage
+        else:
+            if type(startdate)==str:            
+                ts = pd.Timestamp(startdate)
+            else:
+                ts = startdate #assume it's a pd timestamp
+
+        while ts<pd.to_datetime('today')-pd.DateOffset(88): #only need to go to 88 days ago - can use faster API for more recent data
             url=ts.strftime('https://openaq-data.s3.amazonaws.com/%Y-%m-%d.csv')
             if verbose:
                 print("Downloading %s" % url)
             s=requests.get(url).content
             try:
                 c=pd.read_csv(io.StringIO(s.decode('utf-8')))        
-                c = c[c['location']=='US Diplomatic Post: Kampala']
+                c = c[c['location']==loc]
                 c.utc = pd.to_datetime(c['utc'])
                 c.local = pd.to_datetime(c['local'])                
                 c = c.rename(columns={"latitude":"coordinates.latitude","longitude":"coordinates.longitude","utc":"date.utc","local":"date.local"})

@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: download-openaq
+Version: 1.1
+Summary: Download data from an openaq channel using their API
+Home-page: https://github.com/lionfish0/download_openaq.git
+Author: Mike Smith
+Author-email: m.t.smith@sheffield.ac.uk
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: UNKNOWN
+Keywords: openaq
+Platform: UNKNOWN

@@ -1,0 +1,7 @@
+README.md
+download_openaq/__init__.py
+download_openaq.egg-info/PKG-INFO
+download_openaq.egg-info/SOURCES.txt
+download_openaq.egg-info/dependency_links.txt
+download_openaq.egg-info/requires.txt
+download_openaq.egg-info/top_level.txt
