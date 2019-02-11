@@ -8,7 +8,7 @@ def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000,startdat
     """Download data from OpenAQ.
     loc = location
     e.g. loc = 'US Diplomatic Post: Kampala' 
-    cache = whether to use the cache (set to 'use', 'only' or 'refresh')
+    cache = whether to use the cache (set to 'use', 'only', 'onlyapi', or 'refresh')
     cacheonly = if set: number of previous data points to save in cache
     pagesize = size of pages to load data"""
     
@@ -27,7 +27,7 @@ def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000,startdat
             if verbose:
                 print("Cache not found")
  
-    if olddata is None:
+    if (olddata is None) and ((cache=='use') or (cache=='refresh')):
         print("Downloading backed up raw CSV files from OpenAQ AWS. This may take a while")
         #I don't see much alternative to downloading the whole file, as the records are spread throughout the file
         cs = []
