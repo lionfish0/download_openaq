@@ -3,6 +3,6 @@ Download data from openAQ. Wraps the py-openaq module https://github.com/dhhagan
 
 This module handles caching etc.
 
-# Imstall
+# Install
 
 pip install git+https://github.com/lionfish0/download_openaq.git
