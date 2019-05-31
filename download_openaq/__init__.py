@@ -10,7 +10,12 @@ def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000,startdat
     e.g. loc = 'US Diplomatic Post: Kampala' 
     cache = whether to use the cache (set to 'use', 'only', 'onlyapi', or 'refresh')
     cacheonly = if set: number of previous data points to save in cache
-    pagesize = size of pages to load data"""
+    pagesize = size of pages to load data
+    startdate = either a string or a pandas timestamp, default is to download all data for the sensor.
+            if type(startdate)==str:            
+                ts = pd.Timestamp(startdate)
+            else:
+ts = startdate #assume it's a pd times"""
     
     olddata = None
     #olddate = pd.Timestamp(year=1970,month=1,day=1)
