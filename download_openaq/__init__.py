@@ -13,7 +13,6 @@ def download(loc,verbose=False,cache='use',cacheonly=None,pagesize=1000,startdat
     pagesize = size of pages to load data"""
     
     olddata = None
-    #olddate = pd.Timestamp(year=1970,month=1,day=1)
     
     if not (cache=='refresh'):
         try:            
