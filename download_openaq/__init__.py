@@ -22,8 +22,9 @@ ts = startdate #assume it's a pd times"""
     if not (cache=='refresh'):
         try:            
             if verbose:
-                print("Trying cache")
-            olddata = pickle.load(open("openaq_%s.p" % loc,'rb'))
+                cachefilename = "openaq_%s.p" % loc
+                print("Trying cache (%s)" % cachefilename)
+            olddata = pickle.load(open(cachefilename,'rb'))
             #olddate = max(olddata.index) #get the newest time we have in cache
             if verbose:
                 print("Loaded %d records from cache." % len(olddata))
